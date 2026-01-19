@@ -1,5 +1,6 @@
 package com.Inclass.Ecommerce.controller;
 
+import com.Inclass.Ecommerce.dto.PaymentRequest;
 import com.Inclass.Ecommerce.model.Payment;
 import com.Inclass.Ecommerce.service.PaymentService;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,10 @@ public class PaymentController {
     }
 
     @PostMapping("/create")
-    public Payment pay(@RequestParam String orderId, @RequestParam Double amount) {
-        return service.create(orderId, amount);
+    public Payment createPayment(@RequestBody PaymentRequest request) {
+        return service.create(
+                request.getOrderId(),
+                request.getAmount()
+        );
     }
 }

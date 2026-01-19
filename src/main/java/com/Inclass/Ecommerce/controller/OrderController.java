@@ -1,5 +1,6 @@
 package com.Inclass.Ecommerce.controller;
 
+import com.Inclass.Ecommerce.dto.CreateOrderRequest;
 import com.Inclass.Ecommerce.model.Order;
 import com.Inclass.Ecommerce.service.OrderService;
 import org.springframework.web.bind.annotation.*;
@@ -15,12 +16,12 @@ public class OrderController {
     }
 
     @PostMapping
-    public Order create(@RequestParam String userId) {
-        return service.createOrder(userId);
+    public Order createOrder(@RequestBody CreateOrderRequest request) {
+        return service.createOrder(request.getUserId());
     }
 
-    @GetMapping("/{id}")
-    public Order get(@PathVariable String id) {
-        return service.getOrder(id);
+    @GetMapping("/{orderId}")
+    public Order getOrder(@PathVariable String orderId) {
+        return service.getOrder(orderId);
     }
 }

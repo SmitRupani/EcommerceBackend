@@ -1,5 +1,6 @@
 package com.Inclass.Ecommerce.controller;
 
+import com.Inclass.Ecommerce.dto.AddToCartRequest;
 import com.Inclass.Ecommerce.model.CartItem;
 import com.Inclass.Ecommerce.service.CartService;
 import org.springframework.web.bind.annotation.*;
@@ -17,18 +18,24 @@ public class CartController {
     }
 
     @PostMapping("/add")
-    public CartItem add(@RequestBody CartItem item) {
+    public CartItem addToCart(@RequestBody AddToCartRequest request) {
+
+        CartItem item = new CartItem();
+        item.setUserId(request.getUserId());
+        item.setProductId(request.getProductId());
+        item.setQuantity(request.getQuantity());
+
         return service.add(item);
     }
 
     @GetMapping("/{userId}")
-    public List<CartItem> get(@PathVariable String userId) {
+    public List<CartItem> getUserCart(@PathVariable String userId) {
         return service.getUserCart(userId);
     }
 
     @DeleteMapping("/{userId}/clear")
-    public String clear(@PathVariable String userId) {
+    public String clearCart(@PathVariable String userId) {
         service.clear(userId);
-        return "Cart cleared";
+        return "Cart cleared successfully";
     }
 }

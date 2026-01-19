@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: Ecommerce
+
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/ecommerce
+
+jwt:
+  secret: secretkeyforjwttokens1234567890
+  expiration: 86400000  # 24 hours in ms

@@ -1,11 +1,16 @@
+server:
+  port: 8080
+
 spring:
   application:
-    name: Ecommerce
+    name: ecommerce-backend
 
   data:
     mongodb:
-      uri: mongodb://localhost:27017/ecommerce
+      uri: mongodb://localhost:27017/ecommerce_db
 
-jwt:
-  secret: secretkeyforjwttokens1234567890
-  expiration: 86400000  # 24 hours in ms
+logging:
+  level:
+    org.springframework.web: INFO
+    org.springframework.data.mongodb: INFO
+
